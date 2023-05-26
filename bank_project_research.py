@@ -439,9 +439,6 @@ voting_clf = VotingClassifier(estimators=[('KNN', best_models["KNN"]),
 cv_results = cross_validate(voting_clf, X, y, cv=5, scoring="f1_macro")
 print(f"Accuracy: {cv_results['test_score'].mean()}")
 
-#f1:0.6567071313588995
-#accuracy:0.6783381409218394
-#
 
 
 
