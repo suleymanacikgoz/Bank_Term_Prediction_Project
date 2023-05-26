@@ -220,7 +220,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             poutcome = data['poutcome'][0]
             deposit = data['deposit'][0]
 
-            # Verileri bir DataFrame'e dönüştür
+            # Verileri bir DataFrame'e dönüştürülmesi
             data_dict = {
                 'age': [age],
                 'job': [job],
@@ -246,7 +246,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             new_data = pd.DataFrame(data_dict)
             df = df.append(new_data)
 
-            # Veri ön işleme adımlarını uygula (örneğin, veri dönüşümleri)
+            # Veri ön işleme adımları
 
             def grab_col_names(dataframe, cat_th=10, car_th=20):
                 """
@@ -327,11 +327,11 @@ class RequestHandler(BaseHTTPRequestHandler):
 
             df = df.drop(labels=["duration", 'poutcome'], axis=1)
 
-            # Drop the Job Occupations that are "Unknown"
+            
             df = df.drop(df.loc[df["job"] == "unknown"].index)
             df = df.drop(df.loc[df["education"] == "unknown"].index)
 
-            # Manager and admin. are basically the same, added under the same categorical value.
+            
             lst = [df]
 
             for col in lst:
